@@ -1,0 +1,22 @@
+{
+  "name": "vue2-shopping-cart",
+  "version": "0.0.1",
+  "description": "vue2 shopping cart sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isjia/vue2-shopping-cart.git"
+  },
+  "keywords": [
+    "vue2.0"
+  ],
+  "author": "isJia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isjia/vue2-shopping-cart/issues"
+  },
+  "homepage": "https://github.com/isjia/vue2-shopping-cart#readme"
+}

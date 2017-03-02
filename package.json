@@ -22,5 +22,9 @@
   "dependencies": {
     "axios": "^0.15.3",
     "vue": "^2.2.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1"
   }
 }

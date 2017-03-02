@@ -4,7 +4,8 @@ var vm = new Vue({
 
   // 定义模型，所有的模型发生改变都会反向去操作 DOM
   data: {
-    title: "Hello Vue.js!"
+    productList: [],
+    total: 0
   },
 
   // 局部过滤器
@@ -20,7 +21,16 @@ var vm = new Vue({
   // 定义事件绑定的函数放在这里
   methods: {
     cartView: function(){
-      this.title = "Hello Vue";
+      var that = this;
+      axios.get('data/cart.json') // 获取 json 文件
+           .then(function(res){
+             that.productList = res.data.result.productList;
+             that.total = res.data.result.totalMoney;
+             console.log(res.data.result);
+           })
+           .catch(function(err){
+             console.log(err);
+           });
     }
   }
 });

@@ -10,12 +10,16 @@ var vm = new Vue({
 
   // 局部过滤器
   filters: {
-
+    formatMoney: function(price){
+      return '￥ ' + price.toFixed(2);
+    }
   },
 
   // 生命周期中，实例准备完成后执行，参考：https://cn.vuejs.org/v2/guide/instance.html#生命周期图示
   mounted: function(){
-    this.cartView();
+    this.$nextTick(function(){ // 保证 this.$el 已经插入到文档中
+      this.cartView();
+    })
   },
 
   // 定义事件绑定的函数放在这里
@@ -35,5 +39,7 @@ var vm = new Vue({
   }
 });
 
-// 全局过滤器
-Vue.filter();
+// 全局过滤器，所有页面都可以使用
+Vue.filter("money", function(price, type){
+  return price.toFixed(2) + " " + type;
+});

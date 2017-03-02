@@ -91,7 +91,7 @@
                             </div>
                             <!-- 单价 -->
                             <div class="cart-tab-2">
-                                <div class="item-price">{{item.productPrice}}</div>
+                                <div class="item-price">{{item.productPrice | formatMoney}}</div>
                             </div>
                             <div class="cart-tab-3">
                                 <div class="item-quantity">
@@ -107,7 +107,7 @@
                             </div>
                             <div class="cart-tab-4">
                                 <!-- 总金额 -->
-                                <div class="item-price-total">{{item.productPrice * item.productQuentity}}</div>
+                                <div class="item-price-total">{{item.productPrice * item.productQuentity | money('元')}}</div>
                             </div>
                             <!-- 删除功能 -->
                             <div class="cart-tab-5">

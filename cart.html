@@ -45,9 +45,9 @@
     </svg>
 
     <div class="container">
-        <div class="cart">
+        <div class="cart" id="cart">
             <div class="checkout-title">
-                <span>购物车</span>
+                <span>购物车 {{title}}</span>
             </div>
 
             <!-- table -->
@@ -166,5 +166,8 @@
         </div>
     </div>
     <!-- <div class="md-overlay" id="showOverLay"></div> -->
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

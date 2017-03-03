@@ -2,7 +2,7 @@ var vm = new Vue({
   // Vue 实例对象的作用范围，app 范围内的所有元素都可以被 vue 实例操控
   el: "#cart", // 注意这里要有#号
 
-  // 定义模型，所有的模型发生改变都会反向去操作 DOM
+  // 定义模型 model，所有的模型发生改变都会反向去操作 DOM
   data: {
     productList: [],
     total: 0
@@ -35,6 +35,22 @@ var vm = new Vue({
            .catch(function(err){
              console.log(err);
            });
+    },
+    changeQuantity: function(product, num){
+      if (num > 0){
+        product.productQuentity++;
+        if (product.productQuentity > 10) {
+          // 最多一次购买10件商品
+          product.productQuentity = 10;
+        }
+      }
+      else {
+        product.productQuentity--;
+        if (product.productQuentity < 1) {
+          // 最少一次购买1件商品
+          product.productQuentity = 1;
+        }
+      }
     }
   }
 });

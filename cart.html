@@ -97,9 +97,11 @@
                                 <div class="item-quantity">
                                     <div class="select-self select-self-open">
                                         <div class="quentity">
-                                            <a href="javascript:;">-</a>
+                                            <!-- 绑定 click 事件-->
+                                            <a href="javascript:;" v-on:click="changeQuantity(item, -1)">-</a>
                                             <input type="text" disabled v-model="item.productQuentity">
-                                            <a href="javascript:;">+</a>
+                                            <!-- 绑定 click 事件-->
+                                            <a href="javascript:;" @click="changeQuantity(item, 1)">+</a>
                                         </div>
                                     </div>
                                     <div class="item-stock">有货</div>

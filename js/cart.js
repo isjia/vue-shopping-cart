@@ -5,7 +5,8 @@ var vm = new Vue({
   // 定义模型 model，所有的模型发生改变都会反向去操作 DOM
   data: {
     productList: [],
-    total: 0
+    total: 0,
+    checkAllFlag: false
   },
 
   // 局部过滤器
@@ -30,7 +31,7 @@ var vm = new Vue({
            .then(function(res){
              that.productList = res.data.result.productList;
              that.total = res.data.result.totalMoney;
-             console.log(res.data.result);
+            //  console.log(res.data.result);
            })
            .catch(function(err){
              console.log(err);
@@ -51,6 +52,49 @@ var vm = new Vue({
           product.productQuentity = 1;
         }
       }
+    },
+    // selectedProduct: function(item){
+    //   if(typeof item == 'undefined'){
+    //     Vue.set(item, 'checked', true);
+    //     // this.$set(item, "checked", true);
+    //   }
+    //   else {
+    //     item.checked = !item.checked;
+    //   }
+    // },
+    selectedProduct: function(index){
+      if(typeof this.productList[index].checked == 'undefined'){
+        // Vue.set(this.productList[index], 'checked', true);
+        this.$set(this.productList[index], 'checked', true);
+      }
+      else {
+        this.productList[index].checked = !this.productList[index].checked;
+      }
+      if (this.productList[index].checked == false){
+        this.checkAllFlag = false;
+      }
+      this.setCheckAllFlag();
+    },
+    checkAll: function(flag){
+      var that = this;
+      this.checkAllFlag = flag;
+      this.productList.forEach(function(product, index){
+        if(typeof product.checked == 'undefined'){
+          that.$set(product, 'checked', flag);
+        }
+        else {
+          product.checked = flag;
+        }
+      })
+    },
+    setCheckAllFlag: function(){
+      var setAll = true;
+      this.productList.forEach(function(product, index){
+        if (typeof product.checked == 'undefined' || product.checked == false){
+          setAll = false;
+        }
+      })
+      this.checkAllFlag = setAll;
     }
   }
 });

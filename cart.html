@@ -68,7 +68,7 @@
                             <div class="cart-tab-1">
                                 <!-- 单选 -->
                                 <div class="cart-item-check">
-                                    <a href="javascipt:;" class="item-check-btn">
+                                    <a class="item-check-btn" v-on:click="selectedProduct(index)" v-bind:class="{ check: item.checked }" >
                                         <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                                     </a>
                                 </div>
@@ -129,14 +129,14 @@
                 <div class="cart-foot-l">
                     <div class="item-all-check">
                         <a href="javascipt:;">
-                            <span class="item-check-btn">
+                            <span class="item-check-btn" v-bind:class="{check: checkAllFlag}" v-on:click="checkAll(true)">
                                 <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                             </span>
                             <span>全选</span>
                         </a>
                     </div>
                     <div class="item-all-del">
-                        <a href="javascipt:;" class="item-del-btn">
+                        <a href="javascipt:;" class="item-del-btn" v-on:click="checkAll(false)">
                             取消全选
                         </a>
                     </div>
@@ -170,7 +170,7 @@
         </div>
     </div>
     <!-- <div class="md-overlay" id="showOverLay"></div> -->
-    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
     <script src="js/cart.js"></script>
 </body>

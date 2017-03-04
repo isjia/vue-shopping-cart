@@ -52,6 +52,7 @@ var vm = new Vue({
           product.productQuentity = 1;
         }
       }
+      this.calTotal();
     },
     // selectedProduct: function(item){
     //   if(typeof item == 'undefined'){
@@ -76,6 +77,7 @@ var vm = new Vue({
       else {
         this.setCheckAllFlag();
       }
+      this.calTotal();
     },
     checkAll: function(flag){
       var that = this;
@@ -88,6 +90,7 @@ var vm = new Vue({
           product.checked = flag;
         }
       })
+      this.calTotal();      
     },
     setCheckAllFlag: function(){
       var setAll = true;
@@ -97,6 +100,16 @@ var vm = new Vue({
         }
       })
       this.checkAllFlag = setAll;
+    },
+    calTotal: function(){
+      var that = this;
+      var sum = 0;
+      this.productList.forEach(function(product, index){
+        if(product.checked){
+          sum += product.productPrice * product.productQuentity;
+        }
+      })
+      this.total = sum;
     }
   }
 });

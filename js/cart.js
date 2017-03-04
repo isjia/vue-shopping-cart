@@ -73,7 +73,9 @@ var vm = new Vue({
       if (this.productList[index].checked == false){
         this.checkAllFlag = false;
       }
-      this.setCheckAllFlag();
+      else {
+        this.setCheckAllFlag();
+      }
     },
     checkAll: function(flag){
       var that = this;

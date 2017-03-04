@@ -6,7 +6,8 @@ var vm = new Vue({
   data: {
     productList: [],
     total: 0,
-    checkAllFlag: false
+    checkAllFlag: false,
+    delFlag: false
   },
 
   // 局部过滤器

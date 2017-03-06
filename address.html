@@ -55,11 +55,13 @@
             <div class="addr-list-wrap">
                 <div class="addr-list">
                     <ul>
-                        <li>
+                        <li v-for = "(address, index) in limitAddress"
+                            v-bind:class = "{check: index == currIndex}"
+                            v-on:click = "currIndex = index">
                             <dl>
                                 <dt>Alex</dt>
-                                <dd class="address">北京市海淀去中关村</dd>
-                                <dd class="tel">10010</dd>
+                                <dd class="address">{{address.streetName}}</dd>
+                                <dd class="tel">{{address.tel}}</dd>
                             </dl>
                             <div class="addr-opration addr-edit">
                                 <a href="javascript:;" class="addr-edit-btn">
@@ -71,10 +73,12 @@
                                     <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
                                 </a>
                             </div>
-                            <div class="addr-opration addr-set-default">
+                            <div class="addr-opration addr-set-default" v-if="!address.isDefault"
+                                v-on:click = "setDefault(index)">
                                 <a href="javascript:;" class="addr-set-default-btn"><i>设为默认</i></a>
+
                             </div>
-                            <div class="addr-opration addr-default">默认地址</div>
+                            <div class="addr-opration addr-default" v-if="address.isDefault">默认地址</div>
                         </li>
 
                         <li class="addr-new">
@@ -89,7 +93,8 @@
                 </div>
 
                 <div class="shipping-addr-more">
-                    <a class="addr-more-btn up-down-btn" href="javascript:;">
+                    <a class="addr-more-btn up-down-btn" href="javascript:;"
+                      v-on:click = "limitAddressNum = addressList.length">
                         more
                         <i class="i-up-down">
                             <i class="i-up-down-l"></i>
@@ -106,11 +111,13 @@
             <div class="shipping-method-wrap">
                 <div class="shipping-method">
                     <ul>
-                        <li class="check">
+                        <li v-bind:class = "{check: shippingMethod == 1}"
+                          v-on:click = "shippingMethod = 1">
                             <div class="name">标准配送</div>
                             <div class="price">Free</div>
                         </li>
-                        <li>
+                        <li v-bind:class = "{check: shippingMethod == 2}"
+                          v-on:click = "shippingMethod = 2">
                             <div class="name">高级配送</div>
                             <div class="price">180</div>
                         </li>
@@ -123,5 +130,8 @@
             </div>
         </div>
     </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/address.js"></script>
 </body>
 </html>

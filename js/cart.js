@@ -7,7 +7,8 @@ var vm = new Vue({
     productList: [],
     total: 0,
     checkAllFlag: false,
-    delFlag: false
+    delFlag: false,
+    currIndex: -1
   },
 
   // 局部过滤器
@@ -111,6 +112,15 @@ var vm = new Vue({
         }
       })
       this.total = sum;
+    },
+    delConfirm: function(idx){
+      this.delFlag=true;
+      this.currIndex = idx;
+    },
+    delProduct: function(){
+      this.productList.splice(this.currIndex, 1);
+      this.delFlag = false;
+      this.calTotal();
     }
   }
 });
